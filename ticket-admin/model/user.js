@@ -1,0 +1,20 @@
+module.exports=function(sequelize,DataTypes){
+	return sequelize.define(
+		'user',
+		{
+			id:{
+				type:DataTypes.INTEGER,
+				primaryKey:true,
+				autoIncrement:true
+			},
+			account:{
+				type:DataTypes.STRING,
+				field:'account'
+			},
+			password:{
+				type:DataTypes.STRING,
+				field:'password'
+			}	
+		}
+	)
+}

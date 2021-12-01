@@ -1,0 +1,32 @@
+module.exports={
+	mysql:{
+		database:'vue-ticket',  //数据库名
+		user:'root',
+		password:'a6616916',
+		PORT:'3306',
+		host:'127.0.0.1' //服务器IP
+	},
+	sequelize:{
+		host:'127.0.0.1',
+		dialect:'mysql',
+		dialectOptions:{
+			charset:'utf8mb4',
+			collate:'utf8mb4_unicode_ci',
+			supportBigNumbers:true,
+			bigNumberStrings:true
+		},
+		pool:{
+			max:5,
+			min:0,
+			acquire:30000,
+			idle:10000
+		},
+		define:{
+			freezeTableName:true,
+			timestamps:false,
+			paranoid:false,
+			operatorsAliases:false
+		},
+		timezone:'+08:00'
+	}
+}

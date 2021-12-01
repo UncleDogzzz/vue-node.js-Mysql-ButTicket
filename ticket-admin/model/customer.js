@@ -1,0 +1,37 @@
+module.exports=function(sequelize,DataTypes){
+	return sequelize.define(
+		'customer',
+		{
+			id:{
+				type:DataTypes.INTEGER,
+				primaryKey:true,
+				autoIncrement:true
+			},
+			cinemaid:{
+				type:DataTypes.STRING,
+				field:'cinemaid'
+			},
+			moviceid:{
+				type:DataTypes.STRING,
+				field:'moviceid'
+			},
+			seat:{
+				type:DataTypes.STRING,
+				field:'seat'
+			},
+			time:{
+				type:DataTypes.STRING,
+				field:'time'
+			},
+			username:{
+				type:DataTypes.STRING,
+				field:'username'
+			},
+			price:{
+				type:DataTypes.STRING,
+				field:'price'
+			}
+		
+		}
+	)
+}

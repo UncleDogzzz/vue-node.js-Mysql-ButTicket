@@ -1,0 +1,33 @@
+module.exports=function(sequelize,DataTypes){
+	return sequelize.define(
+		'movieoninfolist',
+		{
+			id:{
+				type:DataTypes.INTEGER,
+				primaryKey:true,
+				autoIncrement:true
+			},
+			name:{
+				type:DataTypes.STRING,
+				field:'name'
+			},
+			star:{
+				type:DataTypes.STRING,
+				field:'star'
+			},
+			score:{
+				type:DataTypes.STRING,
+				field:'score'
+			},
+			showInfo:{
+				type:DataTypes.STRING,
+				field:'showInfo'
+			},
+			img:{
+				type:DataTypes.STRING,
+				field:'img'
+			}
+		
+		}
+	)
+}
