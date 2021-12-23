@@ -3,32 +3,8 @@ import axios from 'axios'
 
 
 export function checklogin(account,password){
-  //创建axiois实例
- //  const instance=axios.create({
- //  // baseURL:'http://123.207.32.32:8000',
- //  baseURL: "http://localhost:3000",
- //  timeout:5000
- //  })
 
- //  //设置拦截器
- //  instance.interceptors.request.use(config=>{
- //    return config
- //  },err=>{
- //    console.log(err)
- //  })
-
- // instance.interceptors.response.use(res=>{
- //   return res.data
- // },err=>{
-
- //   console.log(err)
- // })
-
-
- //  //返回实例
-
- //  return instance(config)
- 
+ //登陆验证
  return request({
 	 url:'/checklogin',
 	 data:{
@@ -41,15 +17,23 @@ export function checklogin(account,password){
 
 
 
-
-export function adduser(account,password){                //增加用户
+//增加用户
+export function adduser(account,password,role_id){                //增加用户
    return request({
     url:'/adduser',
 	data:{
 		 account,
-		 password
+		 password,
+		 role_id
 	},
 	method:'POST'
+   })
+}
+
+//查找用户信息
+export function getUserInfo(id){                //查找
+   return request({
+    url:'/userInfo/'+id
    })
 }
 

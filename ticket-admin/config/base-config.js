@@ -7,5 +7,10 @@ module.exports={
 		signed:true,
 		rolling:false,
 		renew:false
+	},
+	jwt:{
+		secretKey:'myAppToken',
+		tokenExpiresTime:1000*60*30000
+		// tokenExpiresTime:1000*5
 	}
 }

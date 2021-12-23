@@ -8,7 +8,7 @@
 <el-form-item label="请输入账号"><el-input style="width: 250px;" placeholder="请输入账号" v-model="form.account"clearable ></el-input></el-form-item>
 <el-form-item label="请输入密码"><el-input style="width: 250px;" placeholder="请输入密码" v-model="form.password" show-password></el-input></el-form-item>
 <el-button type="success" style="margin-left: %;" @click="onSubmit">登录</el-button>
-<el-button type="success" style="margin-left: %;" @click="toRegister">去注册</el-button>
+<el-button type="primary" style="margin-left: %;" @click="toRegister">去注册</el-button>
 
 
 </el-form>
@@ -20,15 +20,25 @@
 	<el-alert v-if="isFail" ref='fail'
 	    :title="info"
 	    type="error"
-	    effect="dark" style="position: absolute;bottom: 0;">
+	    effect="dark" style="position: absolute;top: 0;">
 	  </el-alert>
 	  </transition>
+	  
+	  
+	  <transition name="el-zoom-in-center">
+	  	  <el-alert v-if="quit"
+	  	      title="退出成功! 下次再见!"
+	  	      type="success"
+	  	      effect="dark" style="position: absolute;top: 0;z-index: 999;">
+	  	    </el-alert>
+	  		</transition>
 	  </div>
   </div>
 </template>
 
 <script>
 	import{checklogin} from 'network/login.js'
+	import{setCookie} from '../../utils/cookie.js'
 	export default{
 		name:'Login',
 		data(){
@@ -39,8 +49,8 @@
 				},
 				info:'',
 				height:'',
-				isSuccess:false,
-				isFail:false
+				isFail:false,
+				quit:false
 			}
 		},
 		methods:{
@@ -59,6 +69,9 @@
 						console.log(res);
 						if(res.success=='1'){
 							console.log('yes');
+							setCookie(res.data.token);
+							console.log(res.data.token);
+							this.$store.commit('changeSuccess');
 							this.$router.push('/home')
 						}else{
 							console.log('no');
@@ -87,12 +100,20 @@
 	},
 	mounted() {
 		this.height=window.screen.height ;
+		this.quit=this.$store.state.quit;
+		console.log(this.quit);
+		if(this.quit){
+			setTimeout(()=>{
+				this.$store.commit('changeQuit');
+				this.quit=!this.quit;
+			},4000)
+		}
 		// request222(123,3211).then(res=>{
 		// 	console.log(res)
 		// 	// var s=JSON.parse(res);
 		// 	console.log(res.name)
 		// })
-	},
+	}
 	}
 </script>
 

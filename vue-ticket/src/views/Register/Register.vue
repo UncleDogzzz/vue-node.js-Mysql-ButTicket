@@ -3,12 +3,15 @@
 			<div style="padding-top: 50%;">
 			<div class="title">买票票</div>
 			
+<el-button round icon="el-icon-back" @click.native='back()' style="position: absolute;left: 9px;
+top: 10px;"></el-button>
+			
 	  <div class="login">
 		  <el-form ref="form" :model="form" >
 	<el-form-item label="请输入账号"><el-input style="width: 250px;" placeholder="请输入账号" v-model="form.account"clearable ></el-input></el-form-item>
 	<el-form-item label="请输入密码"><el-input style="width: 250px;" placeholder="请输入密码" v-model="form.password" show-password></el-input></el-form-item>
-	<el-button type="success" style="margin-left: %;" @click="toRegister">点击注册</el-button>
-	<el-button type="success" style="margin-left: %;" @click="back">返回登陆</el-button>
+	<el-button type="primary" round style="margin-left: %;" @click="toRegister">点击注册</el-button>
+	<!-- <el-button type="success" style="margin-left: %;" @click="back">返回登陆</el-button> -->
 	
 	
 	</el-form>
@@ -20,14 +23,14 @@
 		  <el-alert v-if="isSuccess" ref='fail'
 		      title="注册成功!快去登陆吧!"
 		      type="success"
-		      effect="dark" style="position: absolute;bottom: 0;">
+		      effect="dark" style="position: absolute;top: 0;">
 		    </el-alert>
 		  
 		  
 		<el-alert v-if="isFail" ref='fail'
 		    :title="info"
 		    type="error"
-		    effect="dark" style="position: absolute;bottom: 0;">
+		    effect="dark" style="position: absolute;top: 0;">
 		  </el-alert>
 		  </transition>
 		  </div>
@@ -63,7 +66,7 @@ export default {
 		  		this.isFail=false;
 		  	},3000)
 		  } else{
-			  adduser(this.form.account,this.form.password).then(res=>{          //增加用户API
+			  adduser(this.form.account,this.form.password,3).then(res=>{          //增加用户API
 				  console.log(res);
 				  this.info='注册失败!'+res.info;     
 				  if(res.success=='1'){

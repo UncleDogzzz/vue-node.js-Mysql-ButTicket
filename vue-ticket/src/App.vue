@@ -1,8 +1,8 @@
 <template>
   <div id="app" >
- <keep-alive exclude="Login,Movice,Cinemas" >                      <!-- 保持状态 不会被销毁 除了登录 --> 
+  <!-- <keep-alive exclude="Login,Movice,Cinemas,CinemasDetail,Order" >                      <!-- 保持状态 不会被销毁 除了登录 --> 
    <router-view></router-view>
-    </keep-alive>
+    <!-- </keep-alive> -->
 
   </div>
 </template>

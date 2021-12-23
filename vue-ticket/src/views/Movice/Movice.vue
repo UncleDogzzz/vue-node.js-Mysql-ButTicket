@@ -1,12 +1,20 @@
 <template>
-
-<div class="container" style="background-color: #664D29;" >
+<div>
+	<nav-bar class='home-nav1'>
+		<!-- <el-button round icon="el-icon-back" @click.native='black()' slot='left'>返回</el-button> -->
+		<i class="el-icon-back" slot='left' @click='back()' ></i>
+		<div slot='center'> 电影详情 </div> 
+		</nav-bar>  
+	
+	
+	
+<div class="container" style="background-color: #664D29;margin-top: 43px;" >
 
 <!-- 标题栏 -->
 <div class="flex" style="padding: 10px;
     color: #787878;
     border-top: 1px solid #eaeaea;" >
-            <div class="item_left">
+            <div class="item_left1">
                 <img :src="movice.img"/>
             </div>
             <div class="flex_auto item_middle">
@@ -30,9 +38,9 @@ margin: 2px 0px;
 opacity: .6;">{{movice.pubDesc}}</span></div>
             </div>
             <div class="item_right" >
-				<div @click="back()"><span class="action1" style="margin-left: 11px;
-margin-top: 0px;">返回</span></div>
-                <div><span class="action">去买票</span></div>
+				<!-- <div @click="back()"><span class="action1" style="margin-left: 11px;
+margin-top: 0px;">返回</span></div> -->
+                <div @click="ToBuyTicket"><span class="action">去买票</span></div>
             </div>
         </div>
 		
@@ -155,12 +163,18 @@ margin-top: 0px;">返回</span></div>
 
 
 </div>
+</div>
 </template>
 
 <script>
-	import {getMovieDetail} from 'network/index.js'
+		import {getMovieDetail} from 'network/index.js'
+		import NavBar from 'components/navbar/NavBar.vue'
+		
 	export default{
 		name:'Movice',
+		components:{
+			NavBar
+		},
 		data(){
 			return{
 				movice:''
@@ -169,6 +183,9 @@ margin-top: 0px;">返回</span></div>
 		methods:{
 			back(){
 				this.$router.back()
+			},
+			ToBuyTicket(){
+				this.$router.push('/cinemas')
 			}
 		},
 		mounted(){
@@ -185,6 +202,17 @@ margin-top: 0px;">返回</span></div>
 </script>
 
 <style>
+	.home-nav1{
+	  background-color: /* #42bd56; */#0a9396;
+	  color: black;
+	  position: fixed;                   /* 设置导航栏位置为固定 */
+	  top:0;
+	  left: 0;
+	  right: 0;
+	  z-index: 9;
+	  font-size: 19px;
+	  line-height: 44px;
+	}
 	.container{
 		font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 		    display: flex;
@@ -195,7 +223,7 @@ margin-top: 0px;">返回</span></div>
 	div{
 		display: block;
 	}
-	.item_left img{
+	.item_left1 img{
 		display: block;
 		    width: 95px;
 		    height: 120px;

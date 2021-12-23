@@ -4,29 +4,37 @@ module.exports=function(sequelize,DataTypes){
 		{
 			id:{
 				type:DataTypes.INTEGER,
-				primaryKey:true,
-				autoIncrement:true
+				primaryKey:true
 			},
-			cinemaid:{
+			name:{
 				type:DataTypes.STRING,
-				field:'cinemaid'
+				field:'name'
 			},
-			moviceid:{
+			addr:{
 				type:DataTypes.STRING,
-				field:'moviceid'
+				field:'addr'
 			},
-			seat:{
+			vipInfo:{
 				type:DataTypes.STRING,
-				field:'seat'
+				field:'vipInfo'
 			},
-			time:{
+			endorse:{
 				type:DataTypes.STRING,
-				field:'time'
+				field:'endorse'
 			},
-			price:{
+			allowRefund:{
 				type:DataTypes.STRING,
-				field:'price'
+				field:'allowRefund'
+			},
+			snack:{
+				type:DataTypes.STRING,
+				field:'snack'
+			},
+			vipTag:{
+				type:DataTypes.STRING,
+				field:'vipTag'
 			}
+			
 		
 		}
 	)

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div style="text-align: center;background-color: #444444;">
+			<h3 style="font-size: 30px;">
+				欢迎来到买票票后台！
+			</h3>
+		
+		<button style="margin-bottom: 10px;" id='btn1'>点击访问买票票客户端</button></br>
+			<button id='btn2'>点击访问买票票后台管理系统</button>
+			
+		</div>
+		
+		<script>
+			document.getElementById('btn1').onclick=()=>{
+				console.log(1);
+				window.open('http://localhost:8080');
+			}
+			document.getElementById('btn2').onclick=()=>{
+				console.log(1);
+				window.open('http://localhost:8081');
+			}
+		
+		
+		</script>
+	</body>
+</html>

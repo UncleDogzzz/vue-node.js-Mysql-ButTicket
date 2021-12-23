@@ -8,6 +8,8 @@
 			      effect="dark" style="position: absolute;top: 0;z-index: 999;">
 			    </el-alert>
 				</transition>
+				
+				  <nav-bar class='home-nav'><div slot='center'> 首页 </div> </nav-bar>       <!--  //导航栏 -->
 
 		<div class="block">
 		    <el-carousel height="465px" width='100%'  trigger="hover" arrow="always" >
@@ -27,7 +29,7 @@
 		  <div v-for="(item,index) in items" :key="item.id" :test='item.id'
 		  @click=ToMoviceDetail(item.id) :id='item.id' :style="{marginBottom:(index==items.length-1?'57px':'0px')}"  >
 			  <div class="item">
-				  <div class="item_left">
+				  <div >
 					  <img  :src="item.img" style="display: block;
 width: 65px;
 height: 95px;"/>
@@ -56,6 +58,7 @@ height: 95px;"/>
 </template>
 
 <script>
+	import NavBar from 'components/navbar/NavBar.vue'
 	import MainTabBar from 'components/MainTabBar/MainTabBar.vue'
 	import{getMovieOnInfoList} from 'network/index.js'
 	export default{
@@ -68,7 +71,8 @@ height: 95px;"/>
 			}
 		},
 		components:{
-			MainTabBar
+			MainTabBar,
+			NavBar
 		},
 		methods:{
 			ToMoviceDetail(id){
@@ -88,7 +92,7 @@ height: 95px;"/>
 			})
 		},
 		mounted(){
-
+			console.log(this.$store.state.count);
 			getMovieOnInfoList().then(res=>{
 				console.log(res);
 				this.items=res;
@@ -97,15 +101,33 @@ height: 95px;"/>
 				}
 			})
 			
+			this.isSuccess=this.$store.state.isSuccess;
+			console.log(this.isSuccess)
+			if(this.isSuccess){
+				setTimeout(()=>{
+					this.isSuccess=false;
+					this.$store.commit('changeSuccess');
+				},3000)
+			}
 			
-			setTimeout(()=>{
-				this.isSuccess=false;
-			},3000)
 		}
 	}
 </script>
 
 <style>
+	.block{
+		margin-top: 44px;
+	}
+	.home-nav{
+	  background-color: /* #42bd56; */#0a9396;
+	  color: black;
+	  position: fixed;                   /* 设置导航栏位置为固定 */
+	  top:0;
+	  left: 0;
+	  right: 0;
+	  z-index: 9;
+	  font-size: 19px;
+	}
 	.el-carousel__item h3 {
 	    color: #475669;
 	    font-size: 142px;

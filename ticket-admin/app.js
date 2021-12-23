@@ -9,8 +9,14 @@ const logger = require('koa-logger')
 const login=require('./routes/login')
 const index = require('./routes/index')
 const users = require('./routes/users')
+const cinemas=require('./routes/cinemas.js')
+const role=require('./routes/role.js')
 const cors=require("koa-cors")             //跨域
-app.use(cors())
+app.use(cors(
+  {
+	  'Access-Control-Allow-Methods':['GET', 'PUT', 'POST']
+  }
+))
 // error handler
 onerror(app)
 
@@ -23,7 +29,8 @@ app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 
 app.use(views(__dirname + '/views', {
-  extension: 'nunjucks'
+  // extension: 'nunjucks'
+  map:{html:'nunjucks'}
 }))
 
 // logger
@@ -35,9 +42,11 @@ app.use(async (ctx, next) => {
 })
 
 // routes
+app.use(login.routes(), login.allowedMethods())
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
-app.use(login.routes(), login.allowedMethods())
+app.use(cinemas.routes(), login.allowedMethods())
+app.use(role.routes(), role.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

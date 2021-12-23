@@ -1,0 +1,40 @@
+module.exports=function(sequelize,DataTypes){
+	return sequelize.define(
+		'useroders',
+		{
+			id:{
+				type:DataTypes.INTEGER,
+				primaryKey:true,
+				autoIncrement:true
+			},
+			userId:{
+				type:DataTypes.INTEGER,
+				field:'userId'
+			},
+			cinemaId:{
+				type:DataTypes.INTEGER,
+				field:'cinemaId'
+			},
+			moviceId:{
+				type:DataTypes.INTEGER,
+				field:'moviceId'
+			},
+			time:{
+				type:DataTypes.STRING,
+				field:'time'
+			},
+			seat:{
+				type:DataTypes.STRING,
+				field:'seat'
+			},
+			price:{
+				type:DataTypes.STRING,
+				field:'price'
+			},
+			scheduleId:{
+				type:DataTypes.INTEGER,
+				field:'scheduleId'
+			}
+		}
+	)
+}

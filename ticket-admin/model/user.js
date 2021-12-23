@@ -14,7 +14,15 @@ module.exports=function(sequelize,DataTypes){
 			password:{
 				type:DataTypes.STRING,
 				field:'password'
-			}	
+			},
+			salt:{
+				type:DataTypes.STRING,
+				field:'salt'
+			},
+			role_id:{
+				type:DataTypes.INTEGER,
+				field:'role_id'
+			}
 		}
 	)
 }
